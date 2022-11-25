@@ -1,9 +1,11 @@
 export default function Header() {
-    
+
     return (
-        <nav>
+        <nav className="container-fluid">
             <ul>
-                <li><strong>Brand</strong></li>
+                <li>
+                    <strong>DEMO</strong>
+                </li>
             </ul>
             <ul>
                 <li><a href="#">Link</a></li>
