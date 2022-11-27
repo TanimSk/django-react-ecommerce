@@ -3,20 +3,23 @@
 import '@picocss/pico';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Header from './components/Header';
+
 import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
     <div>
-      <Header />
-
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/hi' element={<div>13</div>} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
         </Routes>
       </BrowserRouter >
-      
+
     </div>
   );
 }
