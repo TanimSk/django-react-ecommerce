@@ -10,12 +10,12 @@ export default function Login() {
         let data = new FormData(form);
         data.append('csrfmiddlewaretoken', csrf);
 
-        fetch(`${URL}/login`,
+        fetch(`${URL}/Login/`,
             {
                 method: 'POST',
                 body: data
             })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
                 console.log(data);
                 // if(data['response'] == "OK")
@@ -30,12 +30,12 @@ export default function Login() {
             <form onSubmit={submit}>
                 <label htmlFor="email">
                     Email
-                    <input name="email" type="email" placeholder="Email Address" required />
+                    <input name="login" type="email" placeholder="Email Address" required />
                 </label>
 
                 <label htmlFor="password">
                     Password
-                    <input name="pswd" type="password" placeholder="Password" required />
+                    <input name="password" type="password" placeholder="Password" required />
                 </label>
 
                 <button type="submit">Login</button>
