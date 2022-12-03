@@ -11,7 +11,7 @@ urlpatterns = [
     path('api/', api.api.urls),
     # ALL Auth
     path('Login/', LoginViewExtended.as_view(), name='Login'),
-    path('Signup/', SignUpViewExtended.as_view(), name='Login'),
+    path('Signup/', SignUpViewExtended.as_view(), name='Signup'),
     path('accounts/', include('allauth.urls')),
     # Frontend
     re_path(r'.*', views.main),

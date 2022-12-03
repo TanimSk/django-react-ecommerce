@@ -18,9 +18,9 @@ export default function Signup() {
                 method: 'POST',
                 body: data
             })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(data => {
-                // if (data['response'] == "OK") NavTo('/login');
+                if (data['status'] == "OK") NavTo('/login');
                 console.log(data);
             });
     }

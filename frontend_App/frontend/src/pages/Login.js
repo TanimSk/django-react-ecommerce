@@ -15,7 +15,7 @@ export default function Login() {
                 method: 'POST',
                 body: data
             })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(data => {
                 console.log(data);
                 // if(data['response'] == "OK")
