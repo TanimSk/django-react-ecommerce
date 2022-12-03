@@ -3,6 +3,7 @@ from allauth.account.views import LoginView, SignupView, SignupForm
 from django import forms
 
 
+
 class LoginViewExtended(LoginView):
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()

@@ -32,7 +32,7 @@ export default function Signup() {
                 <div className="grid">
                     <label htmlFor="firstname">
                         Fist Name
-                        <input name="first_name" className type="text" placeholder="First Name" required />
+                        <input name="first_name" type="text" placeholder="First Name" required />
                     </label>
 
                     <label htmlFor="lastname">

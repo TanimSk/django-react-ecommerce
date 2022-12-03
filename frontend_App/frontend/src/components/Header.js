@@ -13,7 +13,11 @@ export default function Header() {
             </ul>
             <ul>
                 <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+                <li>
+                    <Link to="/profile">
+                        Profile
+                    </Link>
+                </li>
                 <li>
                     <Link to="/login" role="button">
                         Login
