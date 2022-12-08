@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { URL, csrf } from "../components/Constants";
-
+import MsgDiv from "../components/MsgDiv";
 
 export default function Signup() {
 
-    const NavTo = useNavigate();
+    let [msg, setMsg] = useState(<></>);
+
+    // const NavTo = useNavigate();
 
     const submit = (e) => {
         e.preventDefault();
@@ -13,15 +16,22 @@ export default function Signup() {
         let data = new FormData(form);
         data.append('csrfmiddlewaretoken', csrf);
 
-        fetch(`${URL}/Signup/`,
+        if(data.get('password1') !== data.get('password2')){
+            setMsg(<MsgDiv msg="Password didn't match!" success={false}/>);
+        }
+        else setMsg(<></>);
+        
+
+        fetch(`${URL}/dj-rest-auth/registration/`,
             {
                 method: 'POST',
                 body: data
             })
             .then(response => response.json())
             .then(data => {
-                if (data['status'] == "OK") NavTo('/login');
+                // if (data['status'] == "OK") NavTo('/login');
                 console.log(data);
+                setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false}/>)
             });
     }
 
@@ -29,18 +39,7 @@ export default function Signup() {
         <div className="container" style={{ maxWidth: '36rem' }}>
             <h2>Signup</h2>
             <form onSubmit={submit} method="POST">
-                <div className="grid">
-                    <label htmlFor="firstname">
-                        Fist Name
-                        <input name="first_name" className type="text" placeholder="First Name" required />
-                    </label>
-
-                    <label htmlFor="lastname">
-                        Last Name
-                        <input name="last_name" type="text" placeholder="Last Name" required />
-                    </label>
-                </div>
-
+                
                 <label htmlFor="email">
                     Email
                     <input name="email" type="email" placeholder="Email Address" required />
@@ -50,6 +49,13 @@ export default function Signup() {
                     Password
                     <input name="password1" type="password" placeholder="Password" required />
                 </label>
+
+                <label htmlFor="password">
+                    Password Again
+                    <input name="password2" type="password" placeholder="Password" required />
+                </label>
+                                
+                {msg}
 
                 <button type="submit">Sign up</button>
             </form>

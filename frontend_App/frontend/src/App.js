@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import EmailVerify from './pages/EmailVerify';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/email-verify/:key' element={<EmailVerify />} />
         </Routes>
       </BrowserRouter >
 

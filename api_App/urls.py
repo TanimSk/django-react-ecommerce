@@ -1,13 +1,12 @@
 from django.urls import path, include, re_path
-from dj_rest_auth.registration.views import VerifyEmailView
+# from dj_rest_auth.registration.views import VerifyEmailView
 from . import views
 
 urlpatterns = [
     # path('', views.getData),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    re_path(r'^dj-rest-auth/account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(),
-            name='account_email_verification_sent'),
-
+    # re_path(r'^dj-rest-auth/account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(),
+    #         name='account_email_verification_sent'),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
 ]
 # import dj_rest_auth.urls
