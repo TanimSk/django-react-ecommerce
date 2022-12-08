@@ -39,16 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'frontend_App.apps.FrontendAppConfig',
+
+    'rest_framework',
+    'rest_framework.authtoken',
 
     # All Auth
+    'dj_rest_auth',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'dj_rest_auth.registration',
 
     'corsheaders',
     'api_App.apps.ApiAppConfig',
+    'frontend_App.apps.FrontendAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,18 +131,22 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
+ACCOUNT_ADAPTER = 'all_auth_extended.all_auth_extended.AccountAdapter'
+
 SITE_ID = 1
 
-ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 
-ACCOUNT_FORMS = {
-    'signup': 'all_auth_extended.all_auth_extended.SignUpFormExtended'
-}
+# ACCOUNT_FORMS = {
+#     'signup': 'all_auth_extended.all_auth_extended.SignUpFormExtended'
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
