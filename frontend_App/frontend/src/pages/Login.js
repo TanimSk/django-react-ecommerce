@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { URL, csrf } from "../components/Constants";
 import MsgDiv from "../components/MsgDiv";
 import { useState } from "react";
+import { SetCookie } from "../functions/Cookies";
 
 export default function Login() {
 
@@ -19,11 +20,18 @@ export default function Login() {
                 method: 'POST',
                 body: data
             })
-            .then(response => response.json())
-            .then(data => {
-                // if (data['status'] == "OK") NavTo('/login');
-                console.log(data);
-                setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />)
+            .then(function (response) {
+                return Promise.all([response.status, response.json()])
+            })
+            .then(function ([status, data]) {
+                console.log(status, data);
+
+                if(status === 200){
+                    SetCookie('access', data.access_token);
+                    SetCookie('refresh', data.refresh_token);
+                    console.log('saved');
+                }
+                else setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />)
             });
     }
 
@@ -42,7 +50,7 @@ export default function Login() {
                     Password
                     <input name="password" type="password" placeholder="Password" required />
                 </label>
-                
+
                 {msg}
 
                 <button type="submit">Login</button>

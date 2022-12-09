@@ -12,13 +12,12 @@ from .serializers import ProductSerializer
 from .models import Product
 
 
-
-
 @api_view(['GET'])
 @permission_classes((IsAuthenticated, ))
-def getDataP(request, format=None):
-    x = [1, 2, 3]
-    return Response(x)
+def is_valid(request, format=None):
+    return Response({
+        'status': 'OK'
+    })
 
 
 @api_view(['GET', 'POST'])
