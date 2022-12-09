@@ -2,11 +2,23 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 
-from django.http import JsonResponse, HttpResponse
-from io import BytesIO
+# -------------- Authentication ------------------
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
+
+from django.http import HttpResponse
 
 from .serializers import ProductSerializer
 from .models import Product
+
+
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated, ))
+def getDataP(request, format=None):
+    x = [1, 2, 3]
+    return Response(x)
 
 
 @api_view(['GET', 'POST'])
@@ -26,3 +38,6 @@ def getData(request):
     serialized_data = ProductSerializer(products, many=True)
 
     return Response(serialized_data.data)
+
+
+

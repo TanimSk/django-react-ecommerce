@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { URL, csrf } from "../components/Constants";
+import MsgDiv from "../components/MsgDiv";
+import { useState } from "react";
 
 export default function Login() {
+
+    let [msg, setMsg] = useState(<></>);
 
     const submit = (e) => {
         e.preventDefault();
@@ -10,15 +14,16 @@ export default function Login() {
         let data = new FormData(form);
         data.append('csrfmiddlewaretoken', csrf);
 
-        fetch(`${URL}/Login/`,
+        fetch(`${URL}/dj-rest-auth/login/`,
             {
                 method: 'POST',
                 body: data
             })
             .then(response => response.json())
             .then(data => {
+                // if (data['status'] == "OK") NavTo('/login');
                 console.log(data);
-                // if(data['response'] == "OK")
+                setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />)
             });
     }
 
@@ -30,13 +35,15 @@ export default function Login() {
             <form onSubmit={submit}>
                 <label htmlFor="email">
                     Email
-                    <input name="login" type="email" placeholder="Email Address" required />
+                    <input name="email" type="email" placeholder="Email Address" required />
                 </label>
 
                 <label htmlFor="password">
                     Password
                     <input name="password" type="password" placeholder="Password" required />
                 </label>
+                
+                {msg}
 
                 <button type="submit">Login</button>
 

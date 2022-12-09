@@ -22,6 +22,7 @@ export default function EmailVerify() {
             .then(data => {                
                 setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />);
                 if (data[Object.keys(data)[0]]== "ok") NavTo('/login');
+                // console.log(data);
             });
     }
 

@@ -3,7 +3,7 @@ from django.urls import path, include, re_path
 from . import views
 
 urlpatterns = [
-    # path('', views.getData),
+    path('', views.getDataP),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     # re_path(r'^dj-rest-auth/account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(),
     #         name='account_email_verification_sent'),
