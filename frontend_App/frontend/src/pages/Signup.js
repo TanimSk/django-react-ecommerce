@@ -16,22 +16,24 @@ export default function Signup() {
         let data = new FormData(form);
         data.append('csrfmiddlewaretoken', csrf);
 
-        if(data.get('password1') !== data.get('password2')){
-            setMsg(<MsgDiv msg="Password didn't match!" success={false}/>);
+        if (data.get('password1') !== data.get('password2')) {
+            setMsg(<MsgDiv msg="Password didn't match!" success={false} />);
         }
         else setMsg(<></>);
-        
+
 
         fetch(`${URL}/dj-rest-auth/registration/`,
             {
                 method: 'POST',
                 body: data
             })
-            .then(response => response.json())
-            .then(data => {
-                // if (data['status'] == "OK") NavTo('/login');
-                console.log(data);
-                setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false}/>)
+            .then(response => Promise.all([response.json(), response]))
+            .then(([data, response]) => {
+                console.log(response.status);
+                response.status === 201 ?
+                    setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={true} />)
+                    :
+                    setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />)
             });
     }
 
@@ -39,7 +41,7 @@ export default function Signup() {
         <div className="container" style={{ maxWidth: '36rem' }}>
             <h2>Signup</h2>
             <form onSubmit={submit} method="POST">
-                
+
                 <label htmlFor="email">
                     Email
                     <input name="email" type="email" placeholder="Email Address" required />
@@ -54,7 +56,7 @@ export default function Signup() {
                     Password Again
                     <input name="password2" type="password" placeholder="Password" required />
                 </label>
-                                
+
                 {msg}
 
                 <button type="submit">Sign up</button>

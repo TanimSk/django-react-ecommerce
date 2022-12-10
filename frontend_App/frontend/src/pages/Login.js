@@ -24,12 +24,13 @@ export default function Login() {
                 return Promise.all([response.status, response.json()])
             })
             .then(function ([status, data]) {
-                console.log(status, data);
+                // console.log(status, data);
 
                 if(status === 200){
-                    SetCookie('access', data.access_token);
-                    SetCookie('refresh', data.refresh_token);
-                    console.log('saved');
+                    SetCookie('access', data.access_token, 5);
+                    SetCookie('refresh', data.refresh_token, 30);
+                    // console.log('saved');
+                    window.location.href = '/';
                 }
                 else setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />)
             });
