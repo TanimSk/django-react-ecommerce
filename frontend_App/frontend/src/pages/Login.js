@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { URL, csrf } from "../components/Constants";
+import MsgDiv from "../components/MsgDiv";
+import { useState } from "react";
+import { SetCookie } from "../functions/Cookies";
 
 export default function Login() {
+
+    let [msg, setMsg] = useState(<></>);
 
     const submit = (e) => {
         e.preventDefault();
@@ -10,15 +15,24 @@ export default function Login() {
         let data = new FormData(form);
         data.append('csrfmiddlewaretoken', csrf);
 
-        fetch(`${URL}/Login/`,
+        fetch(`${URL}/dj-rest-auth/login/`,
             {
                 method: 'POST',
                 body: data
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                // if(data['response'] == "OK")
+            .then(function (response) {
+                return Promise.all([response.status, response.json()])
+            })
+            .then(function ([status, data]) {
+                // console.log(status, data);
+
+                if(status === 200){
+                    SetCookie('access', data.access_token, 5);
+                    SetCookie('refresh', data.refresh_token, 30);
+                    // console.log('saved');
+                    window.location.href = '/';
+                }
+                else setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />)
             });
     }
 
@@ -30,13 +44,15 @@ export default function Login() {
             <form onSubmit={submit}>
                 <label htmlFor="email">
                     Email
-                    <input name="login" type="email" placeholder="Email Address" required />
+                    <input name="email" type="email" placeholder="Email Address" required />
                 </label>
 
                 <label htmlFor="password">
                     Password
                     <input name="password" type="password" placeholder="Password" required />
                 </label>
+
+                {msg}
 
                 <button type="submit">Login</button>
 

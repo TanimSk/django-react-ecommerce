@@ -1,7 +1,6 @@
-from django.http import JsonResponse
-from allauth.account.views import LoginView, SignupView, SignupForm
-from django import forms
+from allauth.account.adapter import DefaultAccountAdapter
 
+<<<<<<< HEAD
 
 
 class LoginViewExtended(LoginView):
@@ -43,3 +42,8 @@ class SignUpFormExtended(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
         return user
+=======
+class AccountAdapter(DefaultAccountAdapter):
+    def get_email_confirmation_url(self, request, emailconfirmation):
+        return f'http://localhost:3000/email-verify/{emailconfirmation.key}'
+>>>>>>> django_drf

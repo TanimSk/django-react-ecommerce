@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import is_valid_token from "../functions/GetPrivateData";
+import Logout from "../functions/Logout";
 
 export default function Header() {
+
+    let [is_authenticated, setAuth] = useState(false);
+
+    useEffect(() => {
+        is_valid_token().then(valid => {
+            valid ? setAuth(true) : setAuth(false);
+        })
+    }, []);
 
     return (
         <nav className="container-fluid">
@@ -11,6 +22,7 @@ export default function Header() {
                     </strong>
                 </li>
             </ul>
+<<<<<<< HEAD
             <ul>
                 <li><a href="#">Link</a></li>
                 <li>
@@ -24,6 +36,32 @@ export default function Header() {
                     </Link>
                 </li>
             </ul>
+=======
+            {
+                is_authenticated ?
+                    <ul>
+                        <li>
+                            <a href="#" onClick={Logout}>
+                                Logout
+                            </a>
+                        </li>
+                        <li>
+                            <Link to="/private/profile">
+                                Profile
+                            </Link>
+                        </li>
+                    </ul>
+                    :
+                    <ul>
+                        <li>
+                            <Link to="/login" role="button">
+                                Login
+                            </Link>
+                        </li>
+                    </ul>
+            }
+
+>>>>>>> django_drf
         </nav>
     );
 }

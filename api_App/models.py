@@ -9,18 +9,18 @@ class Product(models.Model):
     description = models.TextField()
     price = models.FloatField()
     vacancy = models.IntegerField()
-    image = models.ImageField(upload_to="images/")
+    # image = models.ImageField(upload_to="images/", null=True, blank=True)
 
 
 class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
     GENDER = (
         ('None', 'None'),
         ('Male', 'Male'),
         ('Female', 'Female')
     )
-    
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    name = models.CharField(null=True, blank=True, max_length=100)
     address = models.TextField(null=True, blank=True)
     phone_number = models.CharField(max_length=15)
     gender = models.CharField(
