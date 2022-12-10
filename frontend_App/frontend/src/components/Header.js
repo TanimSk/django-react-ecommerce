@@ -22,21 +22,6 @@ export default function Header() {
                     </strong>
                 </li>
             </ul>
-<<<<<<< HEAD
-            <ul>
-                <li><a href="#">Link</a></li>
-                <li>
-                    <Link to="/profile">
-                        Profile
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/login" role="button">
-                        Login
-                    </Link>
-                </li>
-            </ul>
-=======
             {
                 is_authenticated ?
                     <ul>
@@ -61,7 +46,6 @@ export default function Header() {
                     </ul>
             }
 
->>>>>>> django_drf
         </nav>
     );
 }

@@ -41,20 +41,6 @@ export default function Signup() {
         <div className="container" style={{ maxWidth: '36rem' }}>
             <h2>Signup</h2>
             <form onSubmit={submit} method="POST">
-<<<<<<< HEAD
-                <div className="grid">
-                    <label htmlFor="firstname">
-                        Fist Name
-                        <input name="first_name" type="text" placeholder="First Name" required />
-                    </label>
-
-                    <label htmlFor="lastname">
-                        Last Name
-                        <input name="last_name" type="text" placeholder="Last Name" required />
-                    </label>
-                </div>
-=======
->>>>>>> django_drf
 
                 <label htmlFor="email">
                     Email
