@@ -26,14 +26,19 @@ export default function Header() {
                 is_authenticated ?
                     <ul>
                         <li>
-                            <a href="#" onClick={Logout}>
-                                Logout
-                            </a>
-                        </li>
-                        <li>
                             <Link to="/private/profile">
                                 Profile
                             </Link>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Cart
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onClick={Logout}>
+                                Logout
+                            </a>
                         </li>
                     </ul>
                     :

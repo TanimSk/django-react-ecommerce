@@ -13,3 +13,8 @@ admin.site.register(Product, ProductAdmin)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ("user", "gender",  "name", "address",
                     "phone_number", "birthday", )
+
+
+@admin.register(ProductImage)
+class ProductImageAdmin(admin.ModelAdmin):
+    list_display = ("product", "image",)

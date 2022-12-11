@@ -11,6 +11,7 @@ django-allauth = "*"
 djangorestframework = "*"
 dj-rest-auth = "*"
 djangorestframework-simplejwt = "*"
+whitenoise = "*"
 
 [dev-packages]
 autopep8 = "*"

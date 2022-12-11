@@ -7,7 +7,6 @@ export default function Logout() {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${GetCookie('access')}`
         },
         body: JSON.stringify({

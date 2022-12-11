@@ -7,8 +7,6 @@ export default function Signup() {
 
     let [msg, setMsg] = useState(<></>);
 
-    // const NavTo = useNavigate();
-
     const submit = (e) => {
         e.preventDefault();
 
