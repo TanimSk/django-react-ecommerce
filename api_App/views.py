@@ -14,7 +14,7 @@ from .models import Product, UserProfile
 
 # ---------- Public Data ----------
 @api_view(['GET', 'POST'])
-def getData(request):
+def products_detail(request):
 
     if request.method == 'POST':
         serializer = ProductSerializer(data=request.data)
@@ -28,7 +28,7 @@ def getData(request):
     products = Product.objects.all()
     serialized_data = ProductSerializer(products, many=True)
 
-    return Response(serialized_data.data)
+    return JsonResponse(serialized_data.data, safe=False)
 
 
 # ---------- Private Data ----------

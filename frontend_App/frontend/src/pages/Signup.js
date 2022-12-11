@@ -16,6 +16,7 @@ export default function Signup() {
 
         if (data.get('password1') !== data.get('password2')) {
             setMsg(<MsgDiv msg="Password didn't match!" success={false} />);
+            return false;
         }
         else setMsg(<></>);
 

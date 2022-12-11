@@ -19,6 +19,7 @@ class ProductImage(models.Model):
     image = models.ImageField(upload_to="images/", null=True, blank=True)
 
 
+
 class UserProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile')

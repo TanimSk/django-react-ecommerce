@@ -1,10 +1,10 @@
-export default function Card(){
+export default function Card(props){
     return(
-        <article>
+        <article style={{maxWidth: '20rem'}}>
             <header>
-            <img src="https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_960_720.jpg" alt="" />
+            <img src={props.imageURL} alt="product image" />
             </header>            
-            HI I AM A CAT
+            {props.name}
         </article>
     );
 }

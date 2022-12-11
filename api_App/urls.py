@@ -3,6 +3,9 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from . import views
 
 urlpatterns = [
+
+    path('products/', views.products_detail, name='products'),
+
     # ---------- Auth ------------
     path('is-valid/', views.is_valid),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
