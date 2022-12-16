@@ -1,0 +1,53 @@
+.reset_style {
+    display: inline-block;
+    width: 30rem;
+    height: 30rem;
+}
+
+.reset_style>div {
+    box-sizing: unset;
+    background-repeat: unset;
+    color: unset;
+    tab-size: unset;
+    cursor: unset;
+    font-size: unset;
+    overflow-wrap: unset;
+    text-rendering: unset;
+    font-weight: unset;
+    line-height: unset;
+}
+
+.reset_style ul {
+    color: unset;
+    font-style: unset;
+    font-weight: unset;
+    font-size: unset;
+    padding-inline-start: unset;
+    padding-inline-end: unset;
+    margin-top: unset;
+    margin-bottom: unset;
+}
+
+.reset_style li {
+    padding: unset !important;
+    border: unset;
+    outline: unset;
+    color: unset;
+    font-weight: unset;
+    font-size: unset;
+    line-height: unset;
+    text-align: unset;
+    list-style: unset;
+    background-color: unset;
+    box-shadow: unset;
+}
+
+.reset_style button {
+    display: unset;
+    width: unset;
+    margin-bottom: unset;
+    margin: unset;
+    overflow: unset;
+    font-family: unset;
+    text-transform: unset;
+}

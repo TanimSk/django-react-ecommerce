@@ -15,9 +15,9 @@ export default function Home() {
                 console.log(data);
                 setProducts(data.map(
                     (product, index) =>
-                        <Card key={index} name={product.name} imageURL={URL + product.product_images[0]} />
+                        <Card id={product.id} key={index} name={product.name} imageURL={URL + product?.product_images[0]} />
                 ))
-            })
+            });
 
     }, []);
 

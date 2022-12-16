@@ -1,10 +1,10 @@
-// import logo from './logo.svg';
 // import './App.css';
 import '@picocss/pico';
 import { Routes, Route, BrowserRouter, Router } from "react-router-dom";
 import Header from './components/Header';
 
 import Home from './pages/Home';
+import ProductView from './pages/ProductView/ProductView';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import EmailVerify from './pages/EmailVerify';
@@ -21,8 +21,10 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/product/:id' element={<ProductView />} />
           <Route path='/email-verify/:key' element={<EmailVerify />} />
           
+
           <Route path='/private' element={<PrivateRoute />}>
             <Route path='profile/' element={<Profile/>}/>
           </Route>

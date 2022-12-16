@@ -14,7 +14,7 @@ from .models import Product, UserProfile
 
 # ---------- Public Data ----------
 @api_view(['GET', 'POST'])
-def products_detail(request):
+def products_detail(request, product_id=None):
 
     if request.method == 'POST':
         serializer = ProductSerializer(data=request.data)
@@ -25,8 +25,12 @@ def products_detail(request):
         else:
             return HttpResponse(status=404)
 
-    products = Product.objects.all()
-    serialized_data = ProductSerializer(products, many=True)
+    if product_id is None:
+        products = Product.objects.all()
+        serialized_data = ProductSerializer(products, many=True)
+    else:
+        product = Product.objects.get(id=product_id)
+        serialized_data = ProductSerializer(product)
 
     return JsonResponse(serialized_data.data, safe=False)
 
@@ -50,10 +54,9 @@ def user_profile(request):
 
         if serializer.is_valid():
             serializer.save()
-            return HttpResponse('ok' ,status=201)
+            return HttpResponse('ok', status=201)
         else:
             return HttpResponse('error', status=404)
 
-    
     user_profile_data = UserSerializer(user_profile)
     return JsonResponse(user_profile_data.data)
