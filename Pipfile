@@ -16,6 +16,9 @@ whitenoise = "*"
 [dev-packages]
 autopep8 = "*"
 djlint = "*"
+django-extensions = "*"
+pyparsing = "*"
+pydot = "*"
 
 [requires]
 python_version = "3.10"

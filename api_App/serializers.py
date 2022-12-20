@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, ProductImage, UserProfile
+from .models import Product, ProductImage, UserProfile, OrderedProduct
 
 
 class ImageUrlField(serializers.RelatedField):
@@ -16,16 +16,20 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'description', 'price', 'vacancy', 'product_images',)
+        fields = ('id', 'name', 'description', 'price',
+                  'vacancy', 'product_images',)
 
     def create(self, validated_data):
         return Product.objects.create(**validated_data)
 
 
-class ProductImageSerializer(serializers.Serializer):
+class OrderedProductSerializer(serializers.ModelSerializer):
+    product_images = ImageUrlField(many=True, read_only=True)
+
     class Meta:
-        model = ProductImage
-        fields = ('product', 'image',)
+        model = OrderedProduct
+        fields = ('user', 'product', 'quantity',
+                  'delivered', 'product_images',)
 
 
 class UserSerializer(serializers.ModelSerializer):

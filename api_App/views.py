@@ -8,8 +8,8 @@ from rest_framework.decorators import permission_classes
 
 from django.http import HttpResponse, JsonResponse
 
-from .serializers import ProductSerializer, UserSerializer
-from .models import Product, UserProfile
+from .serializers import ProductSerializer, UserSerializer, OrderedProductSerializer
+from .models import Product, UserProfile, OrderedProduct
 
 
 # ---------- Public Data ----------
@@ -60,3 +60,17 @@ def user_profile(request):
 
     user_profile_data = UserSerializer(user_profile)
     return JsonResponse(user_profile_data.data)
+
+
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated, ])
+def order_products(request):
+
+    user_instance = UserProfile.objects.get(user=request.user)
+    ordered_products = OrderedProduct.objects.filter(user=user_instance).first()
+
+    products = OrderedProductSerializer(ordered_products)
+
+    print()
+
+    return JsonResponse(products.data, safe=False)

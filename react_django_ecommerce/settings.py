@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'api_App.apps.ApiAppConfig',
     'frontend_App.apps.FrontendAppConfig',
+
+    # Dev
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -206,3 +209,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Dev
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

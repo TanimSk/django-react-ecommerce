@@ -11,6 +11,7 @@ import EmailVerify from './pages/EmailVerify';
 
 import PrivateRoute from './functions/PrivateRoute';
 import Profile from './pages/Profile';
+import Cart from './pages/Cart';
 
 function App() {
   return (
@@ -23,10 +24,11 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/product/:id' element={<ProductView />} />
           <Route path='/email-verify/:key' element={<EmailVerify />} />
-          
+
 
           <Route path='/private' element={<PrivateRoute />}>
-            <Route path='profile/' element={<Profile/>}/>
+            <Route path='profile/' element={<Profile />} />
+            <Route path='cart/' element={<Cart />} />
           </Route>
 
         </Routes>

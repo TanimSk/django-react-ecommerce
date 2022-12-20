@@ -18,3 +18,8 @@ class UserProfileAdmin(admin.ModelAdmin):
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):
     list_display = ("product", "image",)
+
+
+@admin.register(OrderedProduct)
+class OrderedProductAdmin(admin.ModelAdmin):
+    list_display = ("user", "quantity", "delivered", )

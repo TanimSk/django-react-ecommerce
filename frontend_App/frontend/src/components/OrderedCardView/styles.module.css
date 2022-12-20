@@ -1,0 +1,25 @@
+.cardContainer {
+    all: unset;
+    /* width: ; */
+}
+
+.cardContainer img {
+    all: unset;
+    width: 6rem;
+    border-radius: 1rem;
+    margin: 1rem;
+    float: left;
+}
+
+.cardContainer article {
+    all: unset
+}
+
+.cardContainer h1 {
+    padding: 1rem;
+    margin: unset;
+}
+
+.cardContainer p {
+    all: unset;
+}

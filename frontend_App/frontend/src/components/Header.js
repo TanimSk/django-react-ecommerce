@@ -31,9 +31,9 @@ export default function Header() {
                             </Link>
                         </li>
                         <li>
-                            <a href="#">
+                            <Link to="/private/cart">
                                 Cart
-                            </a>
+                            </Link>
                         </li>
                         <li>
                             <a href="#" onClick={Logout}>

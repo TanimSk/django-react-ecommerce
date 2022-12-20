@@ -15,9 +15,9 @@ class Product(models.Model):
 
 
 class ProductImage(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_images')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='product_images')
     image = models.ImageField(upload_to="images/", null=True, blank=True)
-
 
 
 class UserProfile(models.Model):
@@ -38,6 +38,15 @@ class UserProfile(models.Model):
         blank=True
     )
     birthday = models.DateField(null=True, blank=True)
+
+
+class OrderedProduct(models.Model):
+    user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    delivered = models.BooleanField()
 
 
 @receiver(email_confirmed)
