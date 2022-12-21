@@ -1,1 +1,1 @@
-web: gunicorn django-react-ecommerce.wsgi
+web: gunicorn react_django_ecommerce.wsgi
