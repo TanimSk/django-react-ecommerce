@@ -12,6 +12,7 @@ djangorestframework = "*"
 dj-rest-auth = "*"
 djangorestframework-simplejwt = "*"
 whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 autopep8 = "*"
