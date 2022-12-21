@@ -32,7 +32,7 @@ export default function Login() {
                     // console.log('saved');
                     window.location.href = '/';
                 }
-                else setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />)
+                else setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />);
             });
     }
 

@@ -1,16 +1,18 @@
+import { URL } from '../Constants';
 import styles from './styles.module.css';
 
-export default function OrderedCardView(){
+export default function OrderedCardView(props) {
     return (
         <div className={styles.cardContainer}>
-            <img src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+            <img src={URL + props.info.images[0]} alt="product image" />
             <article>
                 <h1>
-                    Cat Product
+                    {props.info.product_name}
                 </h1>
                 <p>
-                    Quantity: 45
-                    price: 450
+                    Quantity: {props.info.quantity}
+                    <br />
+                    price: {props.info.product_price}
                 </p>
             </article>
         </div>

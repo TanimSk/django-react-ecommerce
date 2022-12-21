@@ -67,10 +67,33 @@ def user_profile(request):
 def order_products(request):
 
     user_instance = UserProfile.objects.get(user=request.user)
-    ordered_products = OrderedProduct.objects.filter(user=user_instance).first()
 
-    products = OrderedProductSerializer(ordered_products)
+    if request.method == 'POST':
 
-    print()
+        product_instance = Product.objects.get(id=request.data['product_id'])
+        quantity = int(request.data['quantity'])
+
+        OrderedProduct.objects.create(
+            user=user_instance, product=product_instance, quantity=quantity)
+
+        return Response({
+            'status': 'OK'
+        })
+
+    ordered_products = OrderedProduct.objects.filter(
+        user=user_instance, confirmed=False)
+    products = OrderedProductSerializer(ordered_products, many=True)
 
     return JsonResponse(products.data, safe=False)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated, ])
+def order_confirm(request):
+    user_instance = UserProfile.objects.get(user=request.user)
+    OrderedProduct.objects.filter(user=user_instance).update(
+        confirmed=True
+    )
+    return Response({
+        'status': 'OK'
+    })

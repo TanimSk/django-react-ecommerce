@@ -24,12 +24,17 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class OrderedProductSerializer(serializers.ModelSerializer):
-    product_images = ImageUrlField(many=True, read_only=True)
+    product_name = serializers.CharField(source='product.name')
+    product_price = serializers.FloatField(source='product.price')
+    images = serializers.SerializerMethodField()
+
+    def get_images(self, obj: OrderedProduct):
+        return [img.image.url for img in obj.product.product_images.all()]
 
     class Meta:
         model = OrderedProduct
         fields = ('user', 'product', 'quantity',
-                  'delivered', 'product_images',)
+                  'delivered', 'product_name', 'product_price', 'images')
 
 
 class UserSerializer(serializers.ModelSerializer):

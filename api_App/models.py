@@ -44,9 +44,10 @@ class OrderedProduct(models.Model):
     user = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE)
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE)
+        Product, on_delete=models.CASCADE, related_name='ordered_products')
     quantity = models.IntegerField()
-    delivered = models.BooleanField()
+    delivered = models.BooleanField(default=False)
+    confirmed = models.BooleanField(default=False)
 
 
 @receiver(email_confirmed)

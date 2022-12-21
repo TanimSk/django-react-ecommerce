@@ -22,4 +22,4 @@ class ProductImageAdmin(admin.ModelAdmin):
 
 @admin.register(OrderedProduct)
 class OrderedProductAdmin(admin.ModelAdmin):
-    list_display = ("user", "quantity", "delivered", )
+    list_display = ("user", "quantity", "delivered", "confirmed", )

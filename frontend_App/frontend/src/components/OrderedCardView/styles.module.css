@@ -1,11 +1,13 @@
 .cardContainer {
     all: unset;
-    /* width: ; */
+    height: 10rem;
+    display: inline-block;
+    width: 100%;
 }
 
 .cardContainer img {
     all: unset;
-    width: 6rem;
+    width: 8.5rem;
     border-radius: 1rem;
     margin: 1rem;
     float: left;
@@ -16,10 +18,11 @@
 }
 
 .cardContainer h1 {
-    padding: 1rem;
+    padding: .5rem 0 0 0;
     margin: unset;
 }
 
 .cardContainer p {
     all: unset;
+    font-size: .8rem;
 }
