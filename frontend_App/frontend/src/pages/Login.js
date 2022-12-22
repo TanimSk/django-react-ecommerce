@@ -15,6 +15,8 @@ export default function Login() {
         let data = new FormData(form);
         data.append('csrfmiddlewaretoken', csrf);
 
+        console.log(URL);
+
         fetch(`${URL}/dj-rest-auth/login/`,
             {
                 method: 'POST',
