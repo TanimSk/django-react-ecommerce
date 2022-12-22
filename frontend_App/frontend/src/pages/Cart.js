@@ -9,7 +9,7 @@ export default function Cart() {
     let [price, setPrice] = useState(0);
     let [msg, setMsg] = useState(<></>);
 
-    let [hasProduct, setProduct] = useState(false);
+    let [hasProduct, setProduct] = useState(<>Please Wait ...</>);
 
     useEffect(() => {
         fetch(`${URL}/order-products/`, {
@@ -24,12 +24,29 @@ export default function Cart() {
                 let price_trace = 0;
 
                 if (data.length !== 0) {
-                    setProduct(true);
+                    setProduct(
+                        <>
+                            <p>
+                                Total price: {price} USD
+                                {msg}
+                            </p>
+                            <button onClick={confirmOrder}>
+                                Confirm Order
+                            </button>
+                        </>
+                    );
                     setCards(data.map((datum, index) => {
                         price_trace += parseInt(datum.product_price) * parseInt(datum.quantity);
                         return <OrderedCardView info={datum} key={index} />
                     }));
                     setPrice(price_trace);
+                }
+                else {
+                    setProduct(
+                        <h1>
+                            Your Cart is Empty!
+                        </h1>
+                    );
                 }
             });
     }, []);
@@ -53,23 +70,7 @@ export default function Cart() {
     return (
         <div className="container" style={{ maxWidth: '40rem' }}>
             {cards}
-            {
-                hasProduct ?
-                    <>
-                        <p>
-                            Total price: {price} USD
-                            {msg}
-                        </p>
-                        <button onClick={confirmOrder}>
-                            Confirm Order
-                        </button>
-                    </>
-                    :
-                    <h1>
-                        Your Cart is Empty!
-                    </h1>
-            }
-
+            {hasProduct}
         </div>
     );
 }

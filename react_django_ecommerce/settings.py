@@ -15,10 +15,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0*b9086-^fwz5tw--xr_cn!f!$*1ltv8!vv-ipg1)_yi(+2lzu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://*', 'http://*']
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition

@@ -4,6 +4,7 @@ from django.contrib import admin
 from frontend_App import views
 from django.conf.urls.static import static
 from django.conf import settings
+
 # from all_auth_extended.all_auth_extended import *
 
 urlpatterns = [

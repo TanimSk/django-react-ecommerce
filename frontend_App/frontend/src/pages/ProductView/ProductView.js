@@ -58,7 +58,7 @@ export default function ProductView() {
                 console.log(data);
                 data['status'] === 'OK' ?
                     setMsg(<MsgDiv msg='Successfully Added to Cart' success={true} />) :
-                    setMsg(<MsgDiv msg='An Error Occured' success={false} />)
+                    setMsg(<MsgDiv msg='Login First!' success={false} />)
             });
     }
 
