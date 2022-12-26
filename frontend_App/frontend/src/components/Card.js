@@ -2,12 +2,15 @@ import { Link } from "react-router-dom";
 
 export default function Card(props) {
     return (
-        <Link to={`/product/${props.id}`} >
-            <article style={{ maxWidth: '20rem' }}>
-                <header>
+
+        <Link to={`/product/${props.id}`} style={{ margin: '0 1rem' }}>
+            <article style={{ maxWidth: '15rem' }}>
+                <header style={{marginBottom: '.5rem'}}>
                     <img src={props.imageURL} alt="product image" />
                 </header>
-                {props.name}
+                {
+                    props.name.length > 17 ? `${props.name.slice(0, 17)}...` : props.name
+                }
             </article>
         </Link>
     );

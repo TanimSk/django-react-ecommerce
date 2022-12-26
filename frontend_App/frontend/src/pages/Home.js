@@ -26,7 +26,10 @@ export default function Home() {
         <main className="container">
             <h1>Hello, world!</h1>
 
-            <div className="grid">
+            <div style={{
+                display: 'flex', flexWrap: 'wrap',
+                justifyContent: 'center'
+            }}>
                 {products}
             </div>
 

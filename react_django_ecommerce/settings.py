@@ -157,9 +157,17 @@ SIMPLE_JWT = {
 
 REST_USE_JWT = True
 
-############################ All Auth ############################
+############################ All Auth Email ############################
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = 'noreply.service.tanimsk@gmail.com'
+EMAIL_HOST_PASSWORD = 'igcosdywfsqodffg'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+##########################################################################
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`

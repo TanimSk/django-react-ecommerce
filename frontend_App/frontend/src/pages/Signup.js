@@ -30,7 +30,9 @@ export default function Signup() {
             .then(([data, response]) => {
                 console.log(response.status);
                 response.status === 201 ?
-                    setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={true} />)
+                    setMsg(<MsgDiv msg={
+                        `${data[Object.keys(data)[0]]} Check in spam`
+                    } success={true} />)
                     :
                     setMsg(<MsgDiv msg={data[Object.keys(data)[0]]} success={false} />)
             });

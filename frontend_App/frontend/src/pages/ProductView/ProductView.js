@@ -55,7 +55,6 @@ export default function ProductView() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 data['status'] === 'OK' ?
                     setMsg(<MsgDiv msg='Successfully Added to Cart' success={true} />) :
                     setMsg(<MsgDiv msg='Login First!' success={false} />)
